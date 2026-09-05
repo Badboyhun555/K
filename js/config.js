@@ -1,6 +1,6 @@
 // Supabase Configuration
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://bjusqepdnsiodpljucuy.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_sPILDPNIlnCIB_U08oF9Fw_TJ8SohC7";
 
 // Demo Images for Recruitment Form
 const DEMO_IMAGES = {
