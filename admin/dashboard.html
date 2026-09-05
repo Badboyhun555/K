@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - K MUSE NOVA Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <div class="brand-name">K MUSE NOVA</div>
+                    <div class="brand-tagline">MODELS & TALENT</div>
+                    <div class="admin-label">ADMIN PANEL</div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="dashboard.html" class="active">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="dashboard.html">
+                    <i class="fas fa-file-alt"></i> Applications
+                </a>
+                <a href="dashboard.html?status=shortlisted">
+                    <i class="fas fa-star"></i> Shortlisted
+                </a>
+                <a href="dashboard.html?status=interview">
+                    <i class="fas fa-user-check"></i> Interview
+                </a>
+                <a href="dashboard.html?status=selected">
+                    <i class="fas fa-check-circle"></i> Selected
+                </a>
+                <a href="dashboard.html?status=rejected">
+                    <i class="fas fa-times-circle"></i> Rejected
+                </a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="#" id="logout-btn" class="logout-link">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Topbar -->
+            <div class="admin-topbar">
+                <div class="topbar-title">
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Dashboard</h1>
+                </div>
+                
+                <div class="topbar-actions">
+                    <div class="admin-user">
+                        <span class="user-name" id="admin-name">Admin</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="admin-content">
+                <!-- Statistics Cards -->
+                <div class="admin-cards">
+                    <div class="stat-card">
+                        <div class="stat-title">Total Applications</div>
+                        <div class="stat-value" id="total-applications">0</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">New Applications</div>
+                        <div class="stat-value" id="new-applications">0</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Under Review</div>
+                        <div class="stat-value" id="under-review">0</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Shortlisted</div>
+                        <div class="stat-value" id="shortlisted">0</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Interview</div>
+                        <div class="stat-value" id="interview">0</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Selected</div>
+                        <div class="stat-value" id="selected">0</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-title">Rejected</div>
+                        <div class="stat-value" id="rejected">0</div>
+                    </div>
+                </div>
+                
+                <!-- Applications Table -->
+                <div class="admin-table-container">
+                    <div class="admin-table-header">
+                        <h2>Applications</h2>
+                    </div>
+                    
+                    <div class="admin-table-filters">
+                        <div class="filter-group">
+                            <label for="search-input">Search</label>
+                            <input type="text" id="search-input" placeholder="ID, Name, Mobile, Email">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="status-filter">Status</label>
+                            <select id="status-filter">
+                                <option value="">All Statuses</option>
+                                <option value="submitted">Submitted</option>
+                                <option value="under_review">Under Review</option>
+                                <option value="shortlisted">Shortlisted</option>
+                                <option value="interview">Interview</option>
+                                <option value="selected">Selected</option>
+                                <option value="rejected">Rejected</option>
+                                <option value="archived">Archived</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="category-filter">Category</label>
+                            <select id="category-filter">
+                                <option value="">All Categories</option>
+                                <option value="Fashion Model">Fashion Model</option>
+                                <option value="Commercial Model">Commercial Model</option>
+                                <option value="Actor">Actor</option>
+                                <option value="Dancer">Dancer</option>
+                                <option value="Vocalist">Vocalist</option>
+                                <option value="Performer">Performer</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="experience-filter">Experience</label>
+                            <select id="experience-filter">
+                                <option value="">All Experience</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Some Experience">Some Experience</option>
+                                <option value="Professional">Professional</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="sort-select">Sort By</label>
+                            <select id="sort-select">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="name-az">Name A-Z</option>
+                                <option value="name-za">Name Z-A</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Desktop Table -->
+                    <table class="admin-table" id="applications-table">
+                        <thead>
+                            <tr>
+                                <th>Application ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Age</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Submitted</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" style="text-align: center; padding: 2rem; color: var(--color-gray-medium);">
+                                    Loading applications...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- Mobile Cards -->
+                    <div class="admin-mobile-cards" id="applications-mobile-cards">
+                        <div class="application-card" style="text-align: center; padding: 2rem; color: var(--color-gray-medium);">
+                            Loading applications...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/admin-login.js"></script>
+    <script src="../js/admin-dashboard.js"></script>
+    <script>
+        // Handle status filter from URL parameter
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const statusParam = urlParams.get('status');
+            
+            if (statusParam) {
+                const statusFilter = document.getElementById('status-filter');
+                if (statusFilter) {
+                    statusFilter.value = statusParam;
+                    // Trigger filter after applications are loaded
+                    setTimeout(() => {
+                        statusFilter.dispatchEvent(new Event('change'));
+                    }, 500);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
